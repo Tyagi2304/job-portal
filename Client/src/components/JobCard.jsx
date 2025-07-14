@@ -1,27 +1,29 @@
-import React from "react";
-import { assets } from "../assets/assets";
+
 import { useNavigate } from "react-router-dom";
 
 const JobCard = ({ job }) => {
   const navigate = useNavigate();
 
+
+
+
   return (
-    <div className="border border-gray-200  p-6 shadow-md rounded">
+    <div className="border border-gray-200 cursor-pointer hover:bg-gray-50  p-6 shadow-lg rounded">
       <div className="flex justify-between items-center">
-        <img className="h-8" src={assets.company_icon} alt="" />
+        <img className="h-8" src={job.companyId.image} alt="" />
       </div>
-      <h4 className="font-medium text-xl mt-2">{job.title}</h4>
-      <div className="flex items-center gap-3 mt-2 text-xs">
-        <span className="bg-blue-50 border border-blue-200 px-4 py-1.5 rounded">
+      <h4 className="font-medium text-2xl mt-2">{job.title}</h4>
+      <div className="flex items-center gap-3 mt-2 text-sm">
+        <span className="bg-blue-100 border border-blue-200 px-4 py-1.5 rounded">
           {job.location}
         </span>
 
-        <span className="bg-red-50 border border-red-200 px-4 py-1.5 rounded">
+        <span className="bg-red-100 border border-red-200 px-4 py-1.5 rounded">
           {job.level}
         </span>
       </div>
       <p
-        className="text-gray-600 text-sm mt-4"
+        className="text-gray-600 text-base mt-4"
         dangerouslySetInnerHTML={{ __html: job.description.slice(0, 200) }}
       ></p>
       <div className="mt-4 flex gap-4 text-sm">

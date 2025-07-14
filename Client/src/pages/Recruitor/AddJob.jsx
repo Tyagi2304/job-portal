@@ -1,16 +1,60 @@
-import React, { use, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Quill from "quill";
 import { JobCategories, JobLocations } from "../../assets/assets";
+import axios from "axios";
+import { AppContext } from "./../../context/AppContext";
+import { toast } from "react-toastify";
+import useCompanyAuthRedirect from "../../hooks/useCompanyAuthRedirect";
 
 const AddJob = () => {
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("Bangalore");
   const [category, setCategory] = useState("Programming");
   const [level, setLevel] = useState("Beginner Level");
-  const [salary, setSalary] = useState(null);
+  const [salary, setSalary] = useState(0);
 
   const editorRef = useRef(null);
   const quillRef = useRef(null);
+
+  const { backendUrl, companyToken, isAuthLoading ,    setJobsRefreshTrigger} = useContext(AppContext);
+
+  //waiting for token
+   const isCheckingAuth = useCompanyAuthRedirect(companyToken,isAuthLoading);
+
+
+  if (isCheckingAuth)
+  {
+    return (
+      <div className="flex justify-center items-center h-[60vh]">
+      <div className="animate-spin rounded-full h-20 w-20 border-t-4 border-5 border-gray-400  border-t-blue-600"></div>
+    </div>
+    )
+  }
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const description = quillRef.current.root.innerHTML;
+
+      const { data } = await axios.post(
+        backendUrl + "/api/company/post-job",
+        { title, description, location, salary, category, level },
+        { headers: { token: companyToken } }
+      );
+
+      if (data.success) {
+        toast.success(data.message);
+           setJobsRefreshTrigger(prev=>!prev)
+        setTitle("");
+        setSalary(0);
+        quillRef.current.root.innerHTML = "";
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   useEffect(() => {
     //Initiate quill only once
@@ -24,6 +68,7 @@ const AddJob = () => {
   return (
     <>
       <form
+        onSubmit={onSubmitHandler}
         action=""
         className="container p-4 flex flex-col w-full gap-3 items-start"
       >
@@ -88,9 +133,9 @@ const AddJob = () => {
 
         <div>
           <p className="mb-2">Job Salary</p>
-                  <input
-                      min={0}
-                      className="w-full px-3 py-2 border-2 border-gray-300  rounded sm:w-[120px]"
+          <input
+            min={0}
+            className="w-full px-3 py-2 border-2 border-gray-300  rounded sm:w-[120px]"
             type="number"
             placeholder="2500"
             onChange={(e) => setSalary(e.target.value)}
@@ -98,7 +143,9 @@ const AddJob = () => {
           />
         </div>
 
-        <button className="py-3 w-28 mt-4 bg-black cursor-pointer active:bg-gray-500 text-white rounded">ADD</button>
+        <button className="py-3 w-28 mt-4 bg-black cursor-pointer active:bg-gray-500 text-white rounded">
+          ADD
+        </button>
       </form>
     </>
   );

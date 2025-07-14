@@ -3,8 +3,8 @@ import { assets } from "../assets/assets";
 
 const AppDownload = () => {
   return (
-    <div className="container px-4 2xl:px-20 mx-auto my-20">
-      <div className="relative bg-gradient-to-r from-teal-200 to-teal-600 p-12 sm:p-24 lg:p-32 rounded-lg">
+    <div className="container px-4 2xl:px-20 mx-auto mt-5 mb-20">
+      <div className="relative bg-gradient-to-r text-white from-teal-900 to-teal-600 p-12 sm:p-24 lg:p-32 rounded-lg">
         <div>
           <h1 className="text-3xl lg:text-4xl font-bold mb-8 max-w-md">
             Download Mobile App For Better Experience

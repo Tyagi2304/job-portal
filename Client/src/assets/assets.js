@@ -38,6 +38,13 @@ import Facebook_Logo from "./Facebook_Logo.png";
 import meta_logo from "./meta-logo.png";
 import google_logo from "./google_logo.png";
 import Netflix_logo from "./Netflix-logo.png";
+import dashboard_icon from "./dashboard_icon.svg";
+import up_arrow from "./up_arrow.png";
+import down_arrow from "./down_arrow.png";
+import arrow_up from "./arrowUp.svg";
+import arrow_down from "./arrowDown.svg";
+import heroImage from './HeroImage.png'
+import hero from './Hero.png'
 
 export const assets = {
   logo,
@@ -80,6 +87,13 @@ export const assets = {
   meta_logo,
   google_logo,
   Netflix_logo,
+  dashboard_icon,
+  up_arrow,
+  down_arrow,
+  arrow_up,
+  arrow_down,
+  heroImage,
+  hero,
 };
 
 export const JobCategories = [

@@ -29,33 +29,6 @@ const CompanySlider = () => {
   return (
     <div className="py-8 overflow-hidden mx-1 pl-3 pr-1">
       {
-        /* <Swiper
-        modules={[Autoplay]}
-        slidesPerView={2}
-        spaceBetween={30}
-        
-        loop={true}
-        autoplay={{
-          delay: 80,
-          disableOnInteraction: false,
-        }}
-        speed={4000}
-        breakpoints={{
-          640: { slidesPerView: 3 },
-          850: { slidesPerView: 4 },
-          1024: { slidesPerView: 4 },
-        }}
-      >
-        {logos.map((logo, index) => (
-          <SwiperSlide key={index} className="flex justify-center items-center">
-            <img
-              src={logo}
-              alt={`logo-${index}`}
-              className="h-10 w-auto mx-auto  transition-all duration-300"
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper> */
         <Swiper
           modules={[Autoplay]}
           loop={true}

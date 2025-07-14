@@ -25,7 +25,7 @@ const JobListing = () => {
   };
 
   const handleLocationChange = (location) => {
-    setselectedCategories((prev) =>
+    setselectedLocations((prev) =>
       prev.includes(location)
         ? prev.filter((l) => l !== location)
         : [...prev, location]
@@ -64,7 +64,7 @@ const JobListing = () => {
   return (
     <div className="container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8">
       {/* SIDE BAR*/}
-      <div className="w-full lg:w-1/4  bg-white px-4">
+      <div className="w-full lg:w-1/4 bg-white px-4">
         {/* Search filter from hero */}
         {isSearched &&
           (searchFilter.title !== "" || searchFilter.location !== "") && (
@@ -109,51 +109,52 @@ const JobListing = () => {
         </button>
 
         {/*Category filter*/}
-        <div className={showFilter ? "" : "max-lg:hidden"}>
-          <h4 className="font-medium text-lg py-4">Search by Categories</h4>
-          <ul className="space-y-4 text-gray-700">
-            {JobCategories.map((category, index) => (
-              <li className="flex gap-3 items-center" key={index}>
-                <input
-                  className="scale-125 cursor-pointer"
-                  type="checkbox"
-                  onChange={() => handleCategoryChange(category)}
-                  checked={selectedCategories.includes(category)}
-                />
-                {category}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <div className="max-lg:flex max-lg:flex-row max-lg:gap-15 max-sm:gap-10">
+          <div className={showFilter ? "" : "max-lg:hidden"}>
+            <h4 className="font-medium text-lg py-4">Search by Categories</h4>
+            <ul className="space-y-4 text-gray-700">
+              {JobCategories.map((category, index) => (
+                <li className="flex gap-3 items-center" key={index}>
+                  <input
+                    className="scale-125 cursor-pointer"
+                    type="checkbox"
+                    onChange={() => handleCategoryChange(category)}
+                    checked={selectedCategories.includes(category)}
+                  />
+                  {category}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/*Location filter*/}
-        <div className={showFilter ? "" : "max-lg:hidden"}>
-          <h4 className="font-medium text-lg py-4 pt-14">
-            Search by Locations
-          </h4>
-          <ul className="space-y-4 text-gray-700">
-            {JobLocations.map((location, index) => (
-              <li className="flex gap-3 items-center" key={index}>
-                <input
-                  
-                  className="scale-125 cursor-pointer"
-                  type="checkbox"
-                  onChange={() => handleLocationChange(location)}
-                  checked={selectedLocations.includes(location)}
-                />
-                {location}
-              </li>
-            ))}
-          </ul>
+          {/*Location filter*/}
+          <div className={showFilter ? "" : "max-lg:hidden"}>
+            <h4 className="font-medium text-lg py-4 lg:pt-14">
+              Search by Locations
+            </h4>
+            <ul className="space-y-4 text-gray-700">
+              {JobLocations.map((location, index) => (
+                <li className="flex gap-3 items-center" key={index}>
+                  <input
+                    className="scale-125 cursor-pointer"
+                    type="checkbox"
+                    onChange={() => handleLocationChange(location)}
+                    checked={selectedLocations.includes(location)}
+                  />
+                  {location}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 
       {/* Job Listings */}
       <section className="w-full lg:w-3/4 text-gray-800 max-lg:px-4 ">
-        <h3 className="font-medium text-3xl py-2" id="Job-list">
+        <h3 className="font-semibold text-4xl py-2" id="Job-list">
           Latest jobs
         </h3>
-        <p className="mb-8">Get your desired jobs from top companies</p>
+        <p className="mb-8 text-lg">Get your desired jobs from top companies</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {filteredJobs
             .slice((currentPage - 1) * 6, currentPage * 6)
