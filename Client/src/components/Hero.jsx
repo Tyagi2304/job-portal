@@ -63,7 +63,7 @@ const Hero = () => {
                 <img className="h-4 sm:h-5" src={assets.search_icon} alt="" />
                 <input
                   type="text"
-                  placeholder="Search for jobs"
+                  placeholder="Search jobs"
                   className="max-sm:text-sm rounded outline-none p-2 w-full"
                   ref={titelRef}
                 />
