@@ -12,7 +12,7 @@ const Hero = () => {
 
   const updateBgImage = () => {
     const width = window.innerWidth;
-    if (width > 1360) {
+    if (width > 1280) {
       setBgStyle({
         backgroundImage: `url(${assets.heroImage})`,
       });
@@ -43,7 +43,7 @@ const Hero = () => {
   return (
     <div className="container min-w-full mb-8">
       <div
-        className="relative bg-cover bg-no-repeat lg:bg-right bg-center  text-gray-700 py-50 xl:py-30 px-6 md:px-10 mb-10"
+        className="relative bg-cover bg-no-repeat xl:bg-right bg-center  text-gray-700 py-50 xl:py-30 px-6 md:px-10 mb-10"
         style={bgStyle}
       >
         <div className="relative xl:bg-white bg-blue-50 p-2 xl:p-5 rounded-lg shadow-xl z-10 max-w-2xl xl:mr-220 max-xl:top-40  mx-auto xl:ml-10 flex flex-col items-center xl:items-start justify-center text-left space-y-6 md:space-y-10">
@@ -56,7 +56,7 @@ const Hero = () => {
             Opportunities and Take the First Step Toward Your Future!
           </p>
 
-          {/* Search Bar (always visible) */}
+          {/* Search Bar */}
           <div className="flex items-center justify-between flex-row bg-blue-50 rounded text-gray-900 max-w-xl pl-4 w-full">
             <div className="flex flex-grow w-full">
               <div className="flex items-center w-full md:w-auto">
