@@ -33,8 +33,8 @@ Recruiters can post and manage jobs, while applicants can search, filter, and ap
 ```plaintext
 InfinityHire/
 │
-├── server/           # Express.js server, APIs, and JWT auth
-├── client/           # React.js UI with Tailwind CSS
+├── Server/           # Express.js server, APIs, and JWT auth
+├── Client/           # React.js UI with Tailwind CSS
 ├── README.md
 └── ...
 ```
